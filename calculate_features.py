@@ -62,6 +62,7 @@ if __name__ == '__main__':
 
         record: pd.DataFrame = pd.read_hdf(os.path.join(input_folder, basename))  # Read HDF5 file into pandas DataFrame
 
+        # calculate parameters of force in window
         record_after_force: pd.DataFrame = biolab_utilities.force_features_in_window(record, 256, 32)
 
         # for filtered data file run feature extraction, use xml with limited feature set
