@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+
+<desc>
+    <feature name="AAC" window="256" step="32" />            <!--Average Amplitude Change-->
+    <feature name="TM" window="256" step="32" order="4" />   <!--Absolute Temporal Moment-->
+</desc>
