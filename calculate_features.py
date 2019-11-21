@@ -7,7 +7,6 @@ import glob
 import pandas as pd
 
 import putemg_features
-from putemg_features import biolab_utilities
 
 
 def usage():
@@ -60,13 +59,8 @@ if __name__ == '__main__':
 
         print('Calculating features for {:s} file'.format(filename))
 
-        record: pd.DataFrame = pd.read_hdf(os.path.join(input_folder, basename))  # Read HDF5 file into pandas DataFrame
-
-        # calculate parameters of force in window
-        record_after_force: pd.DataFrame = biolab_utilities.force_features_in_window(record, 256, 32)
-
         # for filtered data file run feature extraction, use xml with limited feature set
-        ft: pd.DataFrame = putemg_features.features_from_xml_on_df(xml_file_url, record_after_force)
+        ft: pd.DataFrame = putemg_features.features_from_xml(xml_file_url, os.path.join(input_folder, basename))
 
         # save extracted features file to designated folder with features_filtered_ prefix
         output_file = filename + '_features.hdf5'
