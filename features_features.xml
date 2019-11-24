@@ -6,6 +6,10 @@
     <emg_desc>
         <feature name="AAC" />            <!--Average Amplitude Change-->
         <feature name="TM" order="4" />   <!--Absolute Temporal Moment-->
+        <feature name="VAR"  />           <!--Variance-->
+        <feature name="LOG" />            <!--LOG Detector-->
+        <feature name="RMS" />            <!--Root Mean Square-->
+        <feature name="IAV" />            <!--Integral Absolute Value-->
     </emg_desc>
 
     <force_desc>
