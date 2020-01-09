@@ -109,15 +109,16 @@ if __name__ == '__main__':
     print()
     print('Starting to learn how to Force...')
 
-    output: Dict[str, any] = dict()
-
-    output["trajectories"] = trajectories
-    output["regressors"] = regressors
-    output["feature_sets"] = feature_sets
-    output["results"]: List[Dict[str, any]] = list()
-
     # for each experiment (single subject, single day)
     for id_, id_splits in splits_all.items():
+        output: Dict[str, any] = dict()
+
+        output["trajectories"] = trajectories
+        output["regressors"] = regressors
+        output["feature_sets"] = feature_sets
+        output["id"] = id_
+        output["results"]: List[Dict[str, any]] = list()
+
         print('\tTrial ID: {:s}'.format(id_), flush=True)
 
         # for each finger trajectory
@@ -160,11 +161,16 @@ if __name__ == '__main__':
                         print(' (fit: {:.1f}s pred: {:.1f}s)'.format(elapsed_fit, elapsed_predict), end='', flush=True)
 
                         # save classification results to output structure
-                        output["results"].append({"id": id_, "split": i_s, "reg": reg_id, "trajectory": trajectory_name,
+                        output["results"].append({"split": i_s, "reg": reg_id, "trajectory": trajectory_name,
                                                   "force_feature": force_feature, "feature_set": feature_set_name,
                                                   "y_true": test_y_true.values.astype(float),
                                                   "y_pred": test_y_pred})
                     print()
 
-    # Dump classification results to file
-    pickle.dump(output, open(os.path.join(result_folder, "force_classification_result.bin"), "wb"))
+        # Dump regression results to file
+        filename = "force_classification_result_" + id_.replace("/", "_") + ".bin"
+        print('\tWriting trial file: {:s}'.format(filename), flush=True)
+        pickle.dump(output, open(os.path.join(result_folder, filename), "wb"))
+
+        # Free memory
+        del output
