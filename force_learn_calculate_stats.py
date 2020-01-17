@@ -38,11 +38,11 @@ if __name__ == '__main__':
 
     results: Dict[Tuple[str, str, str], Dict[str, any]] = dict()
 
-    for file_url in tqdm(all_files, desc="Loading files"):# all_files:
+    for file_url in tqdm(all_files, desc="Processing files"):# all_files:
         # print('Reading result file: {:s} ... '.format(os.path.basename(file_url)))
         data = pickle.load(open(file_url, "rb"))
 
-        for d in tqdm(data['results'], desc="Calculating stats"):
+        for d in data['results']:
             error = d['y_true'] - d['y_pred'].reshape(d['y_true'].shape)
             rmse = np.sqrt(np.mean(np.power(error,2)))
             std = np.std(error)
