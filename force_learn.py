@@ -151,8 +151,6 @@ if __name__ == '__main__':
                         band_columns = [c for c in data['train']['input'].columns if
                                         (channel_range["begin"] <= int(c[c.rindex('_') + 1:]) <= channel_range["end"])]
 
-                        print(band_columns)
-
                         train_x = data['train']['input'][band_columns]
                         train_y = data['train']['output']
 
