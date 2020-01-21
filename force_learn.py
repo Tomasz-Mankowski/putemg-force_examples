@@ -64,7 +64,7 @@ if __name__ == '__main__':
         "Middle": [3],
         "Thumb": [1],
         "Ring+Small": [4],
-        "All": [1, 2, 3, 4],
+        # "All": [1, 2, 3, 4],
     }
 
     # defines regressors and its options to be used in force learn
