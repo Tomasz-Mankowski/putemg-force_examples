@@ -83,6 +83,13 @@ if __name__ == '__main__':
         #             "C": 1.0, "epsilon": 0.1, "shrinking": True, "cache_size": 200, "verbose": False, "max_iter": -1}},
     }
 
+    # defines channels configurations for which classification will be run
+    channel_range = {"begin": 9, "end": 16}
+    # "24chn": {"begin": 1, "end": 24},
+    # "8chn_1band": {"begin": 1, "end": 8},
+    # "8chn_2band": {"begin": 9, "end": 16},
+    # "8chn_3band": {"begin": 17, "end": 24}
+
     # create k-fold validation set, with 3 splits - for each experiment day 3 combination are generated
     # this results in 6 data combination for each subject
     n_splits = 3
@@ -137,10 +144,16 @@ if __name__ == '__main__':
 
                         data = biolab_utilities.prepare_force_data(dfs, s, features, force_feature, trajectory)
 
-                        train_x = data['train']['input']
+                        # strip columns to include only selected channels, eg. only one band
+                        band_columns = [c for c in data['train']['input'].columns if
+                                        (channel_range["begin"] <= int(c[c.rindex('_') + 1:]) <= channel_range["end"])]
+
+                        print(band_columns)
+
+                        train_x = data['train']['input'][band_columns]
                         train_y = data['train']['output']
 
-                        test_x = data['test']['input']
+                        test_x = data['test']['input'][band_columns]
                         test_y_true = data['test']['output']
 
                         for reg_id, reg_settings in regressors.items():
