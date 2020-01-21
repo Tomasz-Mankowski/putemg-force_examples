@@ -44,12 +44,15 @@ if __name__ == '__main__':
 
     # defines feature sets to be used in force learn
     feature_sets = {
-        "TM": ["TM"],
-        "AAC": ["AAC"],
-        "VAR": ["VAR"],
+        "ZC": ["ZC"],
+        "WAMP": ["WAMP"],
         "RMS": ["RMS"],
-        "Best": ["TM", "AAC", "VAR"],
-        "RMS+TM": ["TM", "RMS"],
+        "AAC": ["AAC"],
+        "MNF": ["MNF"],
+        "MNP": ["MNP"],
+        "PKF": ["PKF"],
+        "TimeDomain": ["ZC", "WAMP", "RMS", "AAC"],
+        "FreqDomain": ["PKF", "MNF", "MNP"],
     }
 
     # defines the feature of force measurement to be used
@@ -77,10 +80,10 @@ if __name__ == '__main__':
                      "verbose": False, "warm_start": False, "momentum": 0.9, "nesterovs_momentum": True,
                      "early_stopping": False, "validation_fraction": 0.1, "beta_1": 0.9, "beta_2": 0.999,
                      "epsilon": 1e-08, "n_iter_no_change": 10}},
-        # "SVR": {
-        #    "predictor": "SVR",
-        #    "args": {"kernel": "rbf", "degree": 3, "gamma": "scale", "coef0": 0.0, "tol": 0.001,
-        #             "C": 1.0, "epsilon": 0.1, "shrinking": True, "cache_size": 200, "verbose": False, "max_iter": -1}},
+        "SVR": {
+           "predictor": "SVR",
+           "args": {"kernel": "rbf", "degree": 3, "gamma": "scale", "coef0": 0.0, "tol": 0.001,
+                    "C": 1.0, "epsilon": 0.1, "shrinking": True, "cache_size": 200, "verbose": False, "max_iter": -1}},
     }
 
     # defines channels configurations for which classification will be run
