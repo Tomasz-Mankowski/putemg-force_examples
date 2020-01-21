@@ -4,12 +4,17 @@
     <windowing window="512" step="256" />
 
     <emg_desc>
-        <feature name="AAC" />            <!--Average Amplitude Change-->
-        <feature name="TM" order="4" />   <!--Absolute Temporal Moment-->
-        <feature name="VAR"  />           <!--Variance-->
-        <feature name="LOG" />            <!--LOG Detector-->
-        <feature name="RMS" />            <!--Root Mean Square-->
-        <feature name="IAV" />            <!--Integral Absolute Value-->
+        <feature name="AAC" />                  <!--Average Amplitude Change-->
+        <feature name="TM" order="4" />         <!--Absolute Temporal Moment-->
+        <feature name="VAR"  />                 <!--Variance-->
+        <feature name="RMS" />                  <!--Root Mean Square-->
+        <feature name="IAV" />                  <!--Integral Absolute Value-->
+        <feature name="MNF" />                  <!--Mean Frequency-->
+        <feature name="MNP" />                  <!--Mean Power-->
+        <feature name="WAMP" threshold="10"/>   <!--Willison Amplitude-->
+        <feature name="PKF" />                  <!--Peak Frequency-->
+        <feature name="ZC" threshold="30" />    <!--Zero Crossing-->
+        <feature name="TTP" />                  <!--Total Power-->
     </emg_desc>
 
     <force_desc>
