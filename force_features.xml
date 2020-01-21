@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <features_calculation>
-    <windowing window="256" step="32" />
+    <windowing window="512" step="256" />
 
     <emg_desc>
         <feature name="AAC" />            <!--Average Amplitude Change-->

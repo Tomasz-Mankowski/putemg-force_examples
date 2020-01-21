@@ -55,8 +55,8 @@ if __name__ == '__main__':
         figs.append(fig)
         axes.append(ax)
 
-        bar_width = 0.15
-        bar_spacer = 0.025
+        bar_width = 0.25
+        bar_spacer = 0.04
 
         for r_index, reg in enumerate(regressors):
 
@@ -68,6 +68,9 @@ if __name__ == '__main__':
 
                 rmse_means.append(np.mean(rmse_v))
                 std_means.append(np.mean(std_v))
+
+            print('rmse', rmse_means)
+            print('std', std_means)
 
             ax.bar(np.arange(len(feature_sets)) + (bar_width+bar_spacer) * r_index,  rmse_means, bar_width,
                    label=reg)
@@ -81,7 +84,7 @@ if __name__ == '__main__':
         a.set_xticks(np.arange((len(feature_sets))) + ((bar_width + bar_spacer) * (len(regressors) - 1)) / 2)
         a.set_xticklabels(feature_sets)
 
-        a.set_ylim([0, 18])
-        a.set_yticks(np.arange(19))
+        a.set_ylim([0, 4])
+        a.set_yticks(np.arange(5))
 
     plt.show()
