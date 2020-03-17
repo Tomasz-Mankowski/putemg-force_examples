@@ -80,6 +80,7 @@ if __name__ == '__main__':
                      "verbose": False, "warm_start": False, "momentum": 0.9, "nesterovs_momentum": True,
                      "early_stopping": False, "validation_fraction": 0.1, "beta_1": 0.9, "beta_2": 0.999,
                      "epsilon": 1e-08, "n_iter_no_change": 10}},
+        # SVR can be for only single output
         "SVR": {
            "predictor": "SVR",
            "args": {"kernel": "rbf", "degree": 3, "gamma": "scale", "coef0": 0.0, "tol": 0.001,

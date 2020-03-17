@@ -34,7 +34,7 @@ def cls(result_folder, regressor, trajectory, feature_set):
                 results.append({})
                 results[-1]['y_pred'] = d['y_pred'].reshape(d['y_true'].shape)
                 results[-1]['y_true'] = d['y_true']
-                results[-1]['error'] = d['y_true'] - results[-1]['y_pred']
+                results[-1]['error'] = np.clip(d['y_true'] - results[-1]['y_pred'], -10, 10)
                 results[-1]['split'] = d['split']
                 results[-1]['id'] = os.path.splitext(os.path.basename(file_url))[0][-13:]
                 results[-1]['rmse'] = np.sqrt(np.mean(np.power(results[-1]['error'], 2)))
